@@ -14,12 +14,15 @@ def menu():
     print("=============================")
 
     opc = int(input("Ingrese una opcion: "))
+    return opc
 
 def generar_s():
-    for x in trabajadores:
+    sueldos_t = []
+    for x in range(len(trabajadores)):
         sueldo_aleatorio = random.randint(300000, 2500000)
-        print(sueldo_aleatorio)
-        return sueldo_aleatorio
+        sueldo_t = trabajadores[x], sueldo_aleatorio
+        sueldos_t.append(sueldo_t)
+    print(sueldos_t)
 def clasificar_s():
     pass
 def ver_estadisticas():

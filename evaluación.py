@@ -7,7 +7,6 @@ from fun import *
 
 while True:
     opc = menu()
-
     if opc == 1:
         generar_s()
     elif opc == 2:
@@ -16,5 +15,5 @@ while True:
         ver_estadisticas()
     elif opc == 4:
         reporte_s()
-    else:
+    elif opc == 5:
         salir_p()
