@@ -24,6 +24,7 @@ def menu():
     return opc
 
 def generar_s():
+    limpiar_p()
     for x in range(len(trabajadores)):
         sueldo_aleatorio = random.randint(300000, 2500000)
         afp = sueldo_aleatorio * 0.12
@@ -31,8 +32,10 @@ def generar_s():
         liquido = sueldo_aleatorio-afp-salud
         sueldo_t = trabajadores[x], sueldo_aleatorio, salud, afp, liquido
         sueldos_t.append(sueldo_t)
-
+    print("sueldos completados con exito!!")
+    esperar_t()
 def clasificar_s():
+    limpiar_p()
     total=0
     print("==============================")
     print(f'\nSueldos menores a $800.000')
@@ -75,34 +78,47 @@ def clasificar_s():
         total = sueldos_t[x][1]
         resultado = resultado+total
     print(f"TOTAL SUELDOS:{resultado} ")
+    esperar_t()
 
 def ver_estadisticas():
+    limpiar_p()
     resultado = 0
     for x in range(len(sueldos_t)):
         total = sueldos_t[x][1]
         resultado = resultado+total
     promedio = resultado/10
     sueldos_t.sort()
-    print("el sueldo mas bajo es: ",sueldos_t[0][1])
+    print("\nel sueldo mas bajo es: ",sueldos_t[0][1])
     print("el sueldo mas alto es: ", sueldos_t[9][1])
     print(f"Promedio de sueldo es: {promedio}")
 
     for x in range(len(sueldos_t)):
         total = sueldos_t[x][1]
         resultado = total*total
+    esperar_t()
+
 def reporte_s():
+    limpiar_p()
     print("Nombre empleado | Sueldo Base | Descuento Salud | Descuento AFP | Sueldo Líquido")
     for x in range(len(sueldos_t)):
         print(f"{x+1})", sueldos_t[x])
-        
-        with open("listado_trabajadores", "w", newline="")as archivo:
-            
-        
+
+        #with open("listado_trabajadores", "w" , newline="") as archivo:
+          #  write = write.csv("listado_trabajadores")
+    esperar_t()  
             
 def salir_p():
-
-    datos_user = input("ingrese su nombre: ")
-    rut = int(input('Ingrese su rut sin puntos, sin guion: '))
+    while True:
+        datos_user = input("ingrese su nombre: ")
+        if len(datos_user) > 2:
+            break
+    while True:
+        try:
+            rut = int(input('Ingrese su rut sin puntos, sin guion: '))
+            if rut > 1000000:
+                break
+        except:
+            print("ERROR SU RUT NO DEBE LLEVAR CARACTERES!!")
     os.system('cls')
     print('Finalizando programa...')
     print(f'Desarrollado por,{datos_user}')
