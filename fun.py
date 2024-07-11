@@ -3,6 +3,7 @@ import random, os, msvcrt
 #aleatorio = random.randint(menor, mayor)
 trabajadores = ["juan pérez", "María García","Carlos López","Ana Martínez","Pedro Rodríguez","Laura Hernández","Miguel"
                 "Sánchez","Isabel Gómez","Francisco Díaz","Elena Fernández"]
+sueldos_t = []
 
 def menu():
     print("Menu")
@@ -12,19 +13,59 @@ def menu():
     print("4) Reporte de sueldos")
     print("5) salir programa")
     print("=============================")
+    while True:
+        try:
+            opc = int(input("Ingrese una opcion: "))
+            if opc > 0 and opc < 6:
+                break
 
-    opc = int(input("Ingrese una opcion: "))
+        except:
+            print("ERROR DEBE SER UN NUMERO")
     return opc
 
 def generar_s():
-    sueldos_t = []
     for x in range(len(trabajadores)):
         sueldo_aleatorio = random.randint(300000, 2500000)
         sueldo_t = trabajadores[x], sueldo_aleatorio
         sueldos_t.append(sueldo_t)
-    print(sueldos_t)
+
 def clasificar_s():
-    pass
+    total=0
+    print("==============================")
+    print(f'\nSueldos menores a $800.000')
+    print("-------------------------")
+    print("Nombre Apellido| Sueldo")
+    for x in range(len(sueldos_t)):
+        if sueldos_t[x][1] > 0 and sueldos_t[x][1] < 800000:
+            print(sueldos_t[x])
+            total = total+1
+    print("==============================")
+    print("sueldos de 0 a 800.000: ",total)
+    print("==============================")
+
+    total = 0
+    print("\nsueldos entre 800000 a : 2000000")
+    print("-----------------------")
+    print("Nombre Apellido| Sueldo")
+    for x in range(len(sueldos_t)):
+        if sueldos_t[x][1] > 800000 and sueldos_t[x][1] < 2000000:
+            print(sueldos_t[x])
+            total = total+1
+    print("==============================")
+    print("sueldos de 800.000 y 2000.000: ",total)
+    print("==============================")
+
+    total = 0
+    print("\nsueldos de mas de 2000.000")
+    print("-----------------------")
+    print("Nombre Apellido| Sueldo")
+    for x in range(len(sueldos_t)):
+        if sueldos_t[x][1] > 2000000:
+            print(sueldos_t[x])
+            total = total+1
+    print("==============================")
+    print("sueldos de mas de 2000.000: ",total)
+    print("==============================")
 def ver_estadisticas():
     pass
 def reporte_s():
